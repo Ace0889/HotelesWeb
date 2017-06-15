@@ -1,0 +1,34 @@
+﻿@model Hotel2.Tarjetas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tarjetas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.titular_tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titular_tarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_venc_tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_venc_tarjeta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.num_tarjeta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

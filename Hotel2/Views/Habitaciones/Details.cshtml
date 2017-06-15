@@ -1,0 +1,34 @@
+﻿@model Hotel2.Habitaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Habitaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_habotacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_habotacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.planta_ubicacion_habitacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.planta_ubicacion_habitacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codigo_habitacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

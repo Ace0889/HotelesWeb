@@ -1,0 +1,46 @@
+﻿@*@model IEnumerable<ues.Models.catalogocoord>*@
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#txtSearch").keyup(function () {
+            var x = $("#txtSearch").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Search", "Hoteles")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ "BuscarHotel": x }),
+                    dataType: "json",
+                    success: function (data) {
+                        var table = "<table class='table'>";
+                        $.each(data, function (Mostrar, value) {
+                            table += "<tr><td>" + value.nombre_hotel + "</td> <td>" + value.direccion_hotel + "</td></tr>";
+
+                             });
+
+
+                        table += "</table>";
+                        $("#myData").html(table);
+
+                    }
+                });
+        });
+    });
+</script>
+
+<table>
+    <tbody>
+        <tr>
+            <td valign="top">
+                @Html.TextBox("txtSearch", null, new { @placeholder = "Hotel" })
+
+                <div id="myData">
+
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

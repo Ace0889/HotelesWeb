@@ -1,0 +1,100 @@
+﻿@*@model IEnumerable<ues.Models.catalogocoord>*@
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyALXgbW0cYrzppT9E-e6xTRIQi5WuY1lUA&sensor=false"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var gmarkers = [];
+        var map;
+
+        function initialize() {
+
+            var mapProp = {
+                center: new google.maps.LatLng(17.074804, -96.718475), //India Lat and Lon
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+        $("#txtSearch").keyup(function () {
+            var x = $("#txtSearch").val();
+
+            for (i = 0; i < gmarkers.length; i++) {
+                gmarkers[i].setMap(null);
+            }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Search", "Ubicacions")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ "Location": x }),
+                    dataType: "json",
+                    success: function (data) {
+                        var table = "<table class='table'>";
+                        $.each(data, function (index, value) {
+                            table += "<tr><td>" + value.nombre + "</td></tr>";
+                            var latlng = new google.maps.LatLng(value.latitud, value.longitud);
+                            var marker = new google.maps.Marker({
+                                position: latlng,
+                                title: value.nombre,
+                                map: map
+                            });
+                            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png")
+                            gmarkers.push(marker);
+
+                            var infowindow = new google.maps.InfoWindow({
+                                content: "<div class='infoDiv'>" + "CCT: " + value.idUbicacion + " Nombre: " + value.nombre+"</div></div>"
+                            });
+
+
+
+                            // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.open(map, marker);
+                            });
+
+
+                        });
+                        table += "</table>";
+                        $("#myData").html(table);
+
+                        if (x == "") {
+                            for (j = 0; j < gmarkers.length; j++) {
+                                gmarkers[j].setMap(null);
+                            }
+                        }
+                    }
+                });
+        });
+    });
+    </script>
+    <table>
+        <tbody>
+            <tr>
+                <td valign="top">
+                    @Html.TextBox("txtSearch", null, new { @placeholder = "ubicacion" })
+                    <div id="myData">
+                        @foreach (var item in Model)
+                        {
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>@item.idUbicacion </td>
+                                        <td>@item.nombre </td>
+                                    </tr>
+                                </tbody>
+                            </table>}
+                    </div>
+                </td>
+                <td valign="top">
+                    <div id="googleMap" style="width:1000px;height:600px;"> </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>

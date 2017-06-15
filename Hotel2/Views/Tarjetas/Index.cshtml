@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Hotel2.Tarjetas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titular_tarjeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_venc_tarjeta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titular_tarjeta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_venc_tarjeta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.num_tarjeta }) |
+            @Html.ActionLink("Details", "Details", new { id=item.num_tarjeta }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.num_tarjeta })
+        </td>
+    </tr>
+}
+
+</table>

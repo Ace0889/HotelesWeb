@@ -1,0 +1,96 @@
+﻿@model Hotel2.Reservaciones
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Reservaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_entrada_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_entrada_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_salida_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_salida_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agencia.nombre_agencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia.nombre_agencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.nombre_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.nombre_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descuentos.codigo_descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descuentos.codigo_descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.tipo_habotacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.tipo_habotacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoteles.nombre_hotel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoteles.nombre_hotel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Hotel2.Hoteles>
+
+@{
+    ViewBag.Title = "Lista de Hoteles";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Hotel", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_hotel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion_hotel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono_hotel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.descripcion_cate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_hotel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion_hotel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono_hotel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.descripcion_cate)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_hotel }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_hotel }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_hotel })
+        </td>
+    </tr>
+}
+
+</table>
+

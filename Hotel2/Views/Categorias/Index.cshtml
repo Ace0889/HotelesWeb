@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Hotel2.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion_cate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estrellas_cate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion_cate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estrellas_cate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cate }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cate }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cate })
+        </td>
+    </tr>
+}
+
+</table>

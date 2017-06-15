@@ -1,0 +1,26 @@
+﻿@model Hotel2.Descuentos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Descuentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentaje_descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentaje_descuento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codigo_descuento }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

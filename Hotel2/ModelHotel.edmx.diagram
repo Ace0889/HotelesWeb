@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="abbf3f8f45644e4dbe2189533aaa50bd" Name="Diagram1">
+        <EntityTypeShape EntityType="HotelModel.Agencia" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Categoria" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Clientes" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Descuentos" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Factura" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Habitaciones" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.HabitacionesXHotel" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Hoteles" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Reservaciones" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Tarjetas" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="HotelModel.fk_agencia_reservacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_categoria_hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_cliente_reservacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_tarjeta" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_descuento_reservacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_reservacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_habitacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_habitacion_reservacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.fk_hotel_reservacion" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HotelModel.C__MigrationHistory" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HotelModel.AspNetRoles" Width="1.5" PointX="8.375" PointY="9.5" />
+        <EntityTypeShape EntityType="HotelModel.AspNetUserClaims" Width="1.5" PointX="12.875" PointY="10.625" />
+        <EntityTypeShape EntityType="HotelModel.AspNetUserLogins" Width="1.5" PointX="12.875" PointY="8" />
+        <EntityTypeShape EntityType="HotelModel.AspNetUsers" Width="1.5" PointX="10.625" PointY="8.375" />
+        <EntityTypeShape EntityType="HotelModel.Ubicacion" Width="1.5" PointX="8.375" PointY="0.75" />
+        <AssociationConnector Association="HotelModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="HotelModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="HotelModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

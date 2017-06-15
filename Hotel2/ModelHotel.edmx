@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agencia">
+          <Key>
+            <PropertyRef Name="id_agencia" />
+          </Key>
+          <Property Name="id_agencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_agencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_agencia" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="telefono_agencia" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_cate" />
+          </Key>
+          <Property Name="id_cate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_cate" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="estrellas_cate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_cliente" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="telefono_cleinte" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="correo_cliente" Type="varchar" MaxLength="30" />
+          <Property Name="num_tarjeta_cliente" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Descuentos">
+          <Key>
+            <PropertyRef Name="codigo_descuento" />
+          </Key>
+          <Property Name="codigo_descuento" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="porcentaje_descuento" Type="int" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="id_factura" />
+          </Key>
+          <Property Name="id_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reservacion_factura" Type="int" />
+        </EntityType>
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="codigo_habitacion" />
+          </Key>
+          <Property Name="codigo_habitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_habotacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="planta_ubicacion_habitacion" Type="int" />
+        </EntityType>
+        <EntityType Name="HabitacionesXHotel">
+          <Key>
+            <PropertyRef Name="id_relacion" />
+          </Key>
+          <Property Name="id_relacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_hotel" Type="int" />
+          <Property Name="codigo_habitacion" Type="int" />
+          <Property Name="estado_habitacion" Type="bit" />
+        </EntityType>
+        <EntityType Name="Hoteles">
+          <Key>
+            <PropertyRef Name="id_hotel" />
+          </Key>
+          <Property Name="id_hotel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoria_hotel" Type="int" Nullable="false" />
+          <Property Name="nombre_hotel" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="direccion_hotel" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="telefono_hotel" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservaciones">
+          <Key>
+            <PropertyRef Name="id_reservacion" />
+          </Key>
+          <Property Name="id_reservacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="precio_reservacion" Type="int" Nullable="false" />
+          <Property Name="fecha_entrada_reservacion" Type="date" Nullable="false" />
+          <Property Name="fecha_salida_reservacion" Type="date" Nullable="false" />
+          <Property Name="nombre_reservacion" Type="varchar" MaxLength="80" />
+          <Property Name="hotel_reservacion" Type="int" />
+          <Property Name="habitacion_reservacion" Type="int" />
+          <Property Name="cliente_reservacion" Type="int" />
+          <Property Name="agencia_reservacion" Type="int" />
+          <Property Name="descuento_reservacion" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Tarjetas">
+          <Key>
+            <PropertyRef Name="num_tarjeta" />
+          </Key>
+          <Property Name="num_tarjeta" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="titular_tarjeta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_venc_tarjeta" Type="date" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="idUbicacion" />
+          </Key>
+          <Property Name="idUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="longitud" Type="float" Nullable="false" />
+          <Property Name="latitud" Type="float" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="fk_agencia_reservacion">
+          <End Role="Agencia" Type="Self.Agencia" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencia">
+              <PropertyRef Name="id_agencia" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="agencia_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_categoria_hotel">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_cate" />
+            </Principal>
+            <Dependent Role="Hoteles">
+              <PropertyRef Name="categoria_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_reservacion">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="cliente_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_descuento_reservacion">
+          <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="codigo_descuento" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="descuento_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_habitacion">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="0..1" />
+          <End Role="HabitacionesXHotel" Type="Self.HabitacionesXHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="codigo_habitacion" />
+            </Principal>
+            <Dependent Role="HabitacionesXHotel">
+              <PropertyRef Name="codigo_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_habitacion_reservacion">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="codigo_habitacion" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="habitacion_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_hotel">
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="0..1" />
+          <End Role="HabitacionesXHotel" Type="Self.HabitacionesXHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoteles">
+              <PropertyRef Name="id_hotel" />
+            </Principal>
+            <Dependent Role="HabitacionesXHotel">
+              <PropertyRef Name="id_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_hotel_reservacion">
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoteles">
+              <PropertyRef Name="id_hotel" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="hotel_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_reservacion">
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservaciones">
+              <PropertyRef Name="id_reservacion" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="reservacion_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tarjeta">
+          <End Role="Tarjetas" Type="Self.Tarjetas" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarjetas">
+              <PropertyRef Name="num_tarjeta" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="num_tarjeta_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agencia" EntityType="Self.Agencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HabitacionesXHotel" EntityType="Self.HabitacionesXHotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hoteles" EntityType="Self.Hoteles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservaciones" EntityType="Self.Reservaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjetas" EntityType="Self.Tarjetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_agencia_reservacion" Association="Self.fk_agencia_reservacion">
+            <End Role="Agencia" EntitySet="Agencia" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_categoria_hotel" Association="Self.fk_categoria_hotel">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Hoteles" EntitySet="Hoteles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_reservacion" Association="Self.fk_cliente_reservacion">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_descuento_reservacion" Association="Self.fk_descuento_reservacion">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_habitacion" Association="Self.fk_habitacion">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="HabitacionesXHotel" EntitySet="HabitacionesXHotel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_habitacion_reservacion" Association="Self.fk_habitacion_reservacion">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_hotel" Association="Self.fk_hotel">
+            <End Role="Hoteles" EntitySet="Hoteles" />
+            <End Role="HabitacionesXHotel" EntitySet="HabitacionesXHotel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_hotel_reservacion" Association="Self.fk_hotel_reservacion">
+            <End Role="Hoteles" EntitySet="Hoteles" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_reservacion" Association="Self.fk_reservacion">
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tarjeta" Association="Self.fk_tarjeta">
+            <End Role="Tarjetas" EntitySet="Tarjetas" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agencia">
+          <Key>
+            <PropertyRef Name="id_agencia" />
+          </Key>
+          <Property Name="id_agencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_agencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_agencia" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_agencia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_agencia_reservacion" FromRole="Agencia" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_cate" />
+          </Key>
+          <Property Name="id_cate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_cate" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estrellas_cate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hoteles" Relationship="Self.fk_categoria_hotel" FromRole="Categoria" ToRole="Hoteles" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_cliente" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_cliente" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_cleinte" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo_cliente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="num_tarjeta_cliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_cliente_reservacion" FromRole="Clientes" ToRole="Reservaciones" />
+          <NavigationProperty Name="Tarjetas" Relationship="Self.fk_tarjeta" FromRole="Clientes" ToRole="Tarjetas" />
+        </EntityType>
+        <EntityType Name="Descuentos">
+          <Key>
+            <PropertyRef Name="codigo_descuento" />
+          </Key>
+          <Property Name="codigo_descuento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="porcentaje_descuento" Type="Int32" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_descuento_reservacion" FromRole="Descuentos" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="id_factura" />
+          </Key>
+          <Property Name="id_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reservacion_factura" Type="Int32" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_reservacion" FromRole="Factura" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="codigo_habitacion" />
+          </Key>
+          <Property Name="codigo_habitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_habotacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="planta_ubicacion_habitacion" Type="Int32" />
+          <NavigationProperty Name="HabitacionesXHotel" Relationship="Self.fk_habitacion" FromRole="Habitaciones" ToRole="HabitacionesXHotel" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_habitacion_reservacion" FromRole="Habitaciones" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="HabitacionesXHotel">
+          <Key>
+            <PropertyRef Name="id_relacion" />
+          </Key>
+          <Property Name="id_relacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_hotel" Type="Int32" />
+          <Property Name="codigo_habitacion" Type="Int32" />
+          <Property Name="estado_habitacion" Type="Boolean" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.fk_habitacion" FromRole="HabitacionesXHotel" ToRole="Habitaciones" />
+          <NavigationProperty Name="Hoteles" Relationship="Self.fk_hotel" FromRole="HabitacionesXHotel" ToRole="Hoteles" />
+        </EntityType>
+        <EntityType Name="Hoteles">
+          <Key>
+            <PropertyRef Name="id_hotel" />
+          </Key>
+          <Property Name="id_hotel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoria_hotel" Type="Int32" Nullable="false" />
+          <Property Name="nombre_hotel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_hotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_hotel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.fk_categoria_hotel" FromRole="Hoteles" ToRole="Categoria" />
+          <NavigationProperty Name="HabitacionesXHotel" Relationship="Self.fk_hotel" FromRole="Hoteles" ToRole="HabitacionesXHotel" />
+          <NavigationProperty Name="Reservaciones" Relationship="Self.fk_hotel_reservacion" FromRole="Hoteles" ToRole="Reservaciones" />
+        </EntityType>
+        <EntityType Name="Reservaciones">
+          <Key>
+            <PropertyRef Name="id_reservacion" />
+          </Key>
+          <Property Name="id_reservacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="precio_reservacion" Type="Int32" Nullable="false" />
+          <Property Name="fecha_entrada_reservacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_salida_reservacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombre_reservacion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="hotel_reservacion" Type="Int32" />
+          <Property Name="habitacion_reservacion" Type="Int32" />
+          <Property Name="cliente_reservacion" Type="Int32" />
+          <Property Name="agencia_reservacion" Type="Int32" />
+          <Property Name="descuento_reservacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agencia" Relationship="Self.fk_agencia_reservacion" FromRole="Reservaciones" ToRole="Agencia" />
+          <NavigationProperty Name="Clientes" Relationship="Self.fk_cliente_reservacion" FromRole="Reservaciones" ToRole="Clientes" />
+          <NavigationProperty Name="Descuentos" Relationship="Self.fk_descuento_reservacion" FromRole="Reservaciones" ToRole="Descuentos" />
+          <NavigationProperty Name="Factura" Relationship="Self.fk_reservacion" FromRole="Reservaciones" ToRole="Factura" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.fk_habitacion_reservacion" FromRole="Reservaciones" ToRole="Habitaciones" />
+          <NavigationProperty Name="Hoteles" Relationship="Self.fk_hotel_reservacion" FromRole="Reservaciones" ToRole="Hoteles" />
+        </EntityType>
+        <EntityType Name="Tarjetas">
+          <Key>
+            <PropertyRef Name="num_tarjeta" />
+          </Key>
+          <Property Name="num_tarjeta" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="titular_tarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_venc_tarjeta" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Clientes" Relationship="Self.fk_tarjeta" FromRole="Tarjetas" ToRole="Clientes" />
+        </EntityType>
+        <Association Name="fk_agencia_reservacion">
+          <End Role="Agencia" Type="Self.Agencia" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencia">
+              <PropertyRef Name="id_agencia" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="agencia_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_categoria_hotel">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id_cate" />
+            </Principal>
+            <Dependent Role="Hoteles">
+              <PropertyRef Name="categoria_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cliente_reservacion">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="cliente_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tarjeta">
+          <End Role="Tarjetas" Type="Self.Tarjetas" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarjetas">
+              <PropertyRef Name="num_tarjeta" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="num_tarjeta_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_descuento_reservacion">
+          <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="codigo_descuento" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="descuento_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_reservacion">
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservaciones">
+              <PropertyRef Name="id_reservacion" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="reservacion_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_habitacion">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="0..1" />
+          <End Role="HabitacionesXHotel" Type="Self.HabitacionesXHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="codigo_habitacion" />
+            </Principal>
+            <Dependent Role="HabitacionesXHotel">
+              <PropertyRef Name="codigo_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_habitacion_reservacion">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="codigo_habitacion" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="habitacion_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_hotel">
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="0..1" />
+          <End Role="HabitacionesXHotel" Type="Self.HabitacionesXHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoteles">
+              <PropertyRef Name="id_hotel" />
+            </Principal>
+            <Dependent Role="HabitacionesXHotel">
+              <PropertyRef Name="id_hotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_hotel_reservacion">
+          <End Role="Hoteles" Type="Self.Hoteles" Multiplicity="0..1" />
+          <End Role="Reservaciones" Type="Self.Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoteles">
+              <PropertyRef Name="id_hotel" />
+            </Principal>
+            <Dependent Role="Reservaciones">
+              <PropertyRef Name="hotel_reservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agencia" EntityType="Self.Agencia" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuentos" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" />
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" />
+          <EntitySet Name="HabitacionesXHotel" EntityType="Self.HabitacionesXHotel" />
+          <EntitySet Name="Hoteles" EntityType="Self.Hoteles" />
+          <EntitySet Name="Reservaciones" EntityType="Self.Reservaciones" />
+          <EntitySet Name="Tarjetas" EntityType="Self.Tarjetas" />
+          <AssociationSet Name="fk_agencia_reservacion" Association="Self.fk_agencia_reservacion">
+            <End Role="Agencia" EntitySet="Agencia" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_categoria_hotel" Association="Self.fk_categoria_hotel">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Hoteles" EntitySet="Hoteles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cliente_reservacion" Association="Self.fk_cliente_reservacion">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tarjeta" Association="Self.fk_tarjeta">
+            <End Role="Tarjetas" EntitySet="Tarjetas" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_descuento_reservacion" Association="Self.fk_descuento_reservacion">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_reservacion" Association="Self.fk_reservacion">
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_habitacion" Association="Self.fk_habitacion">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="HabitacionesXHotel" EntitySet="HabitacionesXHotel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_habitacion_reservacion" Association="Self.fk_habitacion_reservacion">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_hotel" Association="Self.fk_hotel">
+            <End Role="Hoteles" EntitySet="Hoteles" />
+            <End Role="HabitacionesXHotel" EntitySet="HabitacionesXHotel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_hotel_reservacion" Association="Self.fk_hotel_reservacion">
+            <End Role="Hoteles" EntitySet="Hoteles" />
+            <End Role="Reservaciones" EntitySet="Reservaciones" />
+          </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="HotelModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="HotelModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="HotelModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="HotelModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="HotelModel.AspNetUsers" />
+          <EntitySet Name="Ubicacion" EntityType="HotelModel.Ubicacion" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="HotelModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="HotelModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="HotelModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="HotelModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="HotelModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="HotelModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="HotelModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="HotelModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="HotelModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="idUbicacion" />
+          </Key>
+          <Property Name="idUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="longitud" Type="Double" Nullable="false" />
+          <Property Name="latitud" Type="Double" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="HotelModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HotelModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="HotelModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HotelModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="HotelModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="HotelModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+          <EntitySetMapping Name="Agencia">
+            <EntityTypeMapping TypeName="HotelModel.Agencia">
+              <MappingFragment StoreEntitySet="Agencia">
+                <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+                <ScalarProperty Name="nombre_agencia" ColumnName="nombre_agencia" />
+                <ScalarProperty Name="direccion_agencia" ColumnName="direccion_agencia" />
+                <ScalarProperty Name="telefono_agencia" ColumnName="telefono_agencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="HotelModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="id_cate" ColumnName="id_cate" />
+                <ScalarProperty Name="descripcion_cate" ColumnName="descripcion_cate" />
+                <ScalarProperty Name="estrellas_cate" ColumnName="estrellas_cate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="HotelModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="telefono_cleinte" ColumnName="telefono_cleinte" />
+                <ScalarProperty Name="correo_cliente" ColumnName="correo_cliente" />
+                <ScalarProperty Name="num_tarjeta_cliente" ColumnName="num_tarjeta_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descuentos">
+            <EntityTypeMapping TypeName="HotelModel.Descuentos">
+              <MappingFragment StoreEntitySet="Descuentos">
+                <ScalarProperty Name="codigo_descuento" ColumnName="codigo_descuento" />
+                <ScalarProperty Name="porcentaje_descuento" ColumnName="porcentaje_descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="HotelModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+                <ScalarProperty Name="reservacion_factura" ColumnName="reservacion_factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitaciones">
+            <EntityTypeMapping TypeName="HotelModel.Habitaciones">
+              <MappingFragment StoreEntitySet="Habitaciones">
+                <ScalarProperty Name="codigo_habitacion" ColumnName="codigo_habitacion" />
+                <ScalarProperty Name="tipo_habotacion" ColumnName="tipo_habotacion" />
+                <ScalarProperty Name="planta_ubicacion_habitacion" ColumnName="planta_ubicacion_habitacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HabitacionesXHotel">
+            <EntityTypeMapping TypeName="HotelModel.HabitacionesXHotel">
+              <MappingFragment StoreEntitySet="HabitacionesXHotel">
+                <ScalarProperty Name="id_relacion" ColumnName="id_relacion" />
+                <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+                <ScalarProperty Name="codigo_habitacion" ColumnName="codigo_habitacion" />
+                <ScalarProperty Name="estado_habitacion" ColumnName="estado_habitacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hoteles">
+            <EntityTypeMapping TypeName="HotelModel.Hoteles">
+              <MappingFragment StoreEntitySet="Hoteles">
+                <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+                <ScalarProperty Name="categoria_hotel" ColumnName="categoria_hotel" />
+                <ScalarProperty Name="nombre_hotel" ColumnName="nombre_hotel" />
+                <ScalarProperty Name="direccion_hotel" ColumnName="direccion_hotel" />
+                <ScalarProperty Name="telefono_hotel" ColumnName="telefono_hotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservaciones">
+            <EntityTypeMapping TypeName="HotelModel.Reservaciones">
+              <MappingFragment StoreEntitySet="Reservaciones">
+                <ScalarProperty Name="id_reservacion" ColumnName="id_reservacion" />
+                <ScalarProperty Name="precio_reservacion" ColumnName="precio_reservacion" />
+                <ScalarProperty Name="fecha_entrada_reservacion" ColumnName="fecha_entrada_reservacion" />
+                <ScalarProperty Name="fecha_salida_reservacion" ColumnName="fecha_salida_reservacion" />
+                <ScalarProperty Name="nombre_reservacion" ColumnName="nombre_reservacion" />
+                <ScalarProperty Name="hotel_reservacion" ColumnName="hotel_reservacion" />
+                <ScalarProperty Name="habitacion_reservacion" ColumnName="habitacion_reservacion" />
+                <ScalarProperty Name="cliente_reservacion" ColumnName="cliente_reservacion" />
+                <ScalarProperty Name="agencia_reservacion" ColumnName="agencia_reservacion" />
+                <ScalarProperty Name="descuento_reservacion" ColumnName="descuento_reservacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjetas">
+            <EntityTypeMapping TypeName="HotelModel.Tarjetas">
+              <MappingFragment StoreEntitySet="Tarjetas">
+                <ScalarProperty Name="num_tarjeta" ColumnName="num_tarjeta" />
+                <ScalarProperty Name="titular_tarjeta" ColumnName="titular_tarjeta" />
+                <ScalarProperty Name="fecha_venc_tarjeta" ColumnName="fecha_venc_tarjeta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="HotelModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="HotelModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="HotelModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="HotelModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="HotelModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion">
+            <EntityTypeMapping TypeName="HotelModel.Ubicacion">
+              <MappingFragment StoreEntitySet="Ubicacion">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="HotelModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

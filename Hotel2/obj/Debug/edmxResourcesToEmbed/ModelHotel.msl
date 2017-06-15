@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+    <EntitySetMapping Name="Agencia">
+      <EntityTypeMapping TypeName="HotelModel.Agencia">
+        <MappingFragment StoreEntitySet="Agencia">
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="nombre_agencia" ColumnName="nombre_agencia" />
+          <ScalarProperty Name="direccion_agencia" ColumnName="direccion_agencia" />
+          <ScalarProperty Name="telefono_agencia" ColumnName="telefono_agencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="HotelModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="id_cate" ColumnName="id_cate" />
+          <ScalarProperty Name="descripcion_cate" ColumnName="descripcion_cate" />
+          <ScalarProperty Name="estrellas_cate" ColumnName="estrellas_cate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="HotelModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+          <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+          <ScalarProperty Name="telefono_cleinte" ColumnName="telefono_cleinte" />
+          <ScalarProperty Name="correo_cliente" ColumnName="correo_cliente" />
+          <ScalarProperty Name="num_tarjeta_cliente" ColumnName="num_tarjeta_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Descuentos">
+      <EntityTypeMapping TypeName="HotelModel.Descuentos">
+        <MappingFragment StoreEntitySet="Descuentos">
+          <ScalarProperty Name="codigo_descuento" ColumnName="codigo_descuento" />
+          <ScalarProperty Name="porcentaje_descuento" ColumnName="porcentaje_descuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="HotelModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+          <ScalarProperty Name="reservacion_factura" ColumnName="reservacion_factura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Habitaciones">
+      <EntityTypeMapping TypeName="HotelModel.Habitaciones">
+        <MappingFragment StoreEntitySet="Habitaciones">
+          <ScalarProperty Name="codigo_habitacion" ColumnName="codigo_habitacion" />
+          <ScalarProperty Name="tipo_habotacion" ColumnName="tipo_habotacion" />
+          <ScalarProperty Name="planta_ubicacion_habitacion" ColumnName="planta_ubicacion_habitacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HabitacionesXHotel">
+      <EntityTypeMapping TypeName="HotelModel.HabitacionesXHotel">
+        <MappingFragment StoreEntitySet="HabitacionesXHotel">
+          <ScalarProperty Name="id_relacion" ColumnName="id_relacion" />
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="codigo_habitacion" ColumnName="codigo_habitacion" />
+          <ScalarProperty Name="estado_habitacion" ColumnName="estado_habitacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hoteles">
+      <EntityTypeMapping TypeName="HotelModel.Hoteles">
+        <MappingFragment StoreEntitySet="Hoteles">
+          <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
+          <ScalarProperty Name="categoria_hotel" ColumnName="categoria_hotel" />
+          <ScalarProperty Name="nombre_hotel" ColumnName="nombre_hotel" />
+          <ScalarProperty Name="direccion_hotel" ColumnName="direccion_hotel" />
+          <ScalarProperty Name="telefono_hotel" ColumnName="telefono_hotel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservaciones">
+      <EntityTypeMapping TypeName="HotelModel.Reservaciones">
+        <MappingFragment StoreEntitySet="Reservaciones">
+          <ScalarProperty Name="id_reservacion" ColumnName="id_reservacion" />
+          <ScalarProperty Name="precio_reservacion" ColumnName="precio_reservacion" />
+          <ScalarProperty Name="fecha_entrada_reservacion" ColumnName="fecha_entrada_reservacion" />
+          <ScalarProperty Name="fecha_salida_reservacion" ColumnName="fecha_salida_reservacion" />
+          <ScalarProperty Name="nombre_reservacion" ColumnName="nombre_reservacion" />
+          <ScalarProperty Name="hotel_reservacion" ColumnName="hotel_reservacion" />
+          <ScalarProperty Name="habitacion_reservacion" ColumnName="habitacion_reservacion" />
+          <ScalarProperty Name="cliente_reservacion" ColumnName="cliente_reservacion" />
+          <ScalarProperty Name="agencia_reservacion" ColumnName="agencia_reservacion" />
+          <ScalarProperty Name="descuento_reservacion" ColumnName="descuento_reservacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarjetas">
+      <EntityTypeMapping TypeName="HotelModel.Tarjetas">
+        <MappingFragment StoreEntitySet="Tarjetas">
+          <ScalarProperty Name="num_tarjeta" ColumnName="num_tarjeta" />
+          <ScalarProperty Name="titular_tarjeta" ColumnName="titular_tarjeta" />
+          <ScalarProperty Name="fecha_venc_tarjeta" ColumnName="fecha_venc_tarjeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="HotelModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="HotelModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="HotelModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="HotelModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="HotelModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ubicacion">
+      <EntityTypeMapping TypeName="HotelModel.Ubicacion">
+        <MappingFragment StoreEntitySet="Ubicacion">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="idUbicacion" ColumnName="idUbicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="HotelModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

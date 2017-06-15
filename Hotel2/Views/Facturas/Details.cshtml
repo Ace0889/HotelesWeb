@@ -1,0 +1,26 @@
+﻿@model Hotel2.Factura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservaciones.nombre_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservaciones.nombre_reservacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_factura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

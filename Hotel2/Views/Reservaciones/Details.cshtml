@@ -1,0 +1,90 @@
+﻿@model Hotel2.Reservaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_entrada_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_entrada_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_salida_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_salida_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_reservacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_reservacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agencia.nombre_agencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia.nombre_agencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.nombre_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.nombre_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descuentos.codigo_descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descuentos.codigo_descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitaciones.tipo_habotacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitaciones.tipo_habotacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoteles.nombre_hotel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoteles.nombre_hotel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_reservacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

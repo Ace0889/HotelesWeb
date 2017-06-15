@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Hotel2.HabitacionesXHotel>
+
+@{
+    ViewBag.Title = "Habitaciones";
+}
+
+<h2>Lista de Habitaciones</h2>
+
+<p>
+    @Html.ActionLink("Cambiar status de la Habitación", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.estado_habitacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitaciones.tipo_habotacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoteles.nombre_hotel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado_habitacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitaciones.tipo_habotacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoteles.nombre_hotel)
+        </td>
+        <td>
+            @Html.ActionLink("Edita", "Edit", new { id=item.id_relacion }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_relacion }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id_relacion })
+        </td>
+    </tr>
+}
+
+</table>
